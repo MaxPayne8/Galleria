@@ -13,8 +13,6 @@ const AddNewCard = () => {
   const navigate = useNavigate();
 
   const handleImage = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
     setImage(e.target.files[0]);
   };
   const [error, showError] = useState(false);
@@ -28,26 +26,25 @@ const AddNewCard = () => {
           download_url: image
             ? URL.createObjectURL(image)
             : "https://wingandaprayerdotlive.files.wordpress.com/2018/07/no-image-available.jpg",
-          id: cards.length + 6,
+          id: cards.length,
         })
       );
       navigate("/");
+      
     } else showError(true);
   };
 
-  console.log(image?.current?.value);
-
   return (
-    <div className="flex justify-center items-center text-slate-200 font font-semibold mt-36 ">
+    <div className="flex justify-center items-center  text-slate-200 font font-semibold mt-36 ">
       <form
         className="w-96 bg-blue-500 rounded-lg "
         onSubmit={(e) => handleSubmit(e)}
       >
         <div className="flex flex-col p-2 my-4">
-          <label className="p-2 m-2">Enter your name</label>
+          <label className="p-2 m-2">Enter your name*</label>
           <input ref={name} type="text" className="text-slate-900 p-2 m-2" />
           {error && (
-            <label className="text-red-700 ml-2 font-semibold">
+            <label className="text-red-700 ml-4 font-semibold">
               Name is required!!
             </label>
           )}

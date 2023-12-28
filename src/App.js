@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import Header from "./components/Header";
 import Browse from "./components/Browse";
 import AddNewCard from "./components/AddNewCard";
+import UpdateCard from "./components/UpdateCard";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ export const route = createBrowserRouter([
     children: [
       { path: "/", element: <Browse /> },
       { path: "/addcard", element: <AddNewCard /> },
+      { path: "/edit/:id", element: <UpdateCard /> },
     ],
   },
 ]);

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCards, deleteCard } from "../utils/cardSlice";
+import { addCards, addIndex, deleteCard } from "../utils/cardSlice";
 import CardTile from "./CardTile";
 import { Link } from "react-router-dom";
-import appStore from "../utils/appStore";
 
 const Browse = () => {
   const dispatch = useDispatch();
@@ -17,10 +16,10 @@ const Browse = () => {
 
   const { apiCards } = useSelector((store) => store.card);
   const { cards } = useSelector((store) => store.card);
-  console.log(apiCards);
-  console.log(cards);
+
   const handleDelete = (id) => {
     dispatch(deleteCard(id));
+    setSure(false);
   };
 
   const [sure, setSure] = useState(false);
@@ -37,7 +36,7 @@ const Browse = () => {
               Create a new Card
             </h1>
             <img
-              className="w-[60%] mx-auto"
+              className="w-[60%] mx-auto rounded-lg"
               src="https://www.shutterstock.com/image-vector/add-new-card-icon-260nw-1335378674.jpg"
               alt="add-card"
             />
@@ -46,7 +45,7 @@ const Browse = () => {
       </nav>
 
       <div className="flex justify-around flex-wrap">
-        {cards.map((card) => (
+        {cards.map((card, index) => (
           <div className="group relative">
             <CardTile
               author={card.author}
@@ -56,9 +55,16 @@ const Browse = () => {
             />
             {!sure && (
               <div>
-                <button className="bg-gray-700 absolute rounded-lg text-white p-2 top-12 left-4  group-hover:opacity-70 opacity-0  hover:!bg-blue-700 hover:!opacity-90 ">
-                  Edit
-                </button>
+                <Link to={"/edit/" + card.id}>
+                  <button
+                    className="bg-gray-700 absolute rounded-lg text-white p-2 top-12 left-4  group-hover:opacity-70 opacity-0  hover:!bg-blue-700 hover:!opacity-90 "
+                    onClick={() => {
+                      dispatch(addIndex(index));
+                    }}
+                  >
+                    Edit
+                  </button>
+                </Link>
 
                 <button
                   className="bg-gray-700 rounded-lg z-20  text-white p-2 top-12 right-4   opacity-0 group-hover:opacity-70 absolute  hover:!bg-red-700 hover:!opacity-90 "

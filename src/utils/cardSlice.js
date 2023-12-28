@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "@testing-library/react";
 
 const cardSlice = createSlice({
   name: "card",
-  initialState: { apiCards: [], cards: [] },
+  initialState: {
+    apiCards: [],
+    cards: [],
+    index: null,
+  },
   reducers: {
     addCards: (state, action) => {
       state.apiCards = action.payload;
@@ -16,9 +19,19 @@ const cardSlice = createSlice({
 
       state.cards = state.cards.filter((card) => card.id !== index);
     },
+    updateCard: (state, action) => {
+      const { index, id, author, download_url } = action.payload;
+
+      state.cards[index].author = author;
+      state.cards[index].download_url = download_url;
+    },
+    addIndex: (state, action) => {
+      state.index = action.payload;
+    },
   },
 });
 
-export const { addCard, addCards, deleteCard } = cardSlice.actions;
+export const { addCard, addCards, deleteCard, updateCard, addIndex } =
+  cardSlice.actions;
 
 export default cardSlice.reducer;
