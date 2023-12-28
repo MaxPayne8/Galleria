@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import CardTile from "./CardTile";
@@ -12,7 +12,10 @@ const CardPrev = () => {
   const selectedCard = apiCards.filter((card) => card.id == id).length
     ? apiCards.filter((card) => card.id == id)
     : cards.filter((card) => card.id == id);
-  console.log(selectedCard);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
       <h1 className="text-center text-2xl font-semibold mt-10">

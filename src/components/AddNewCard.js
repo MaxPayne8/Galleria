@@ -26,7 +26,7 @@ const AddNewCard = () => {
           download_url: image
             ? URL.createObjectURL(image)
             : "https://wingandaprayerdotlive.files.wordpress.com/2018/07/no-image-available.jpg",
-          id: cards.length + 6,
+          id: cards.length + 25,
         })
       );
       navigate("/");
