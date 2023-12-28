@@ -29,8 +29,8 @@ const Browse = () => {
   }, []);
 
   return (
-    <div className="w-full flex bg-slate-100">
-      <nav className="w-56   bg-slate-300">
+    <div className="w-full flex  bg-slate-100">
+      <nav className="w-24 md:w-56   bg-slate-300">
         <Link to="/addcard">
           <div className=" tranform hover:scale-110 transition mt-20 py-10">
             <h1 className="text-center font-semibold p-2 ">
