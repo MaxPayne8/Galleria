@@ -21,17 +21,6 @@ const Header = () => {
         <Link to="/">
           <button
             onClick={() => {
-              dispatch(showMyCards(false));
-              dispatch(showSampleCard(true));
-            }}
-            className="hover:text-blue-700"
-          >
-            My Cards
-          </button>
-        </Link>
-        <Link to="/">
-          <button
-            onClick={() => {
               dispatch(showMyCards(true));
               dispatch(showSampleCard(true));
             }}
@@ -40,6 +29,18 @@ const Header = () => {
             All Cards
           </button>
         </Link>
+        <Link to="/">
+          <button
+            onClick={() => {
+              dispatch(showMyCards(false));
+              dispatch(showSampleCard(true));
+            }}
+            className="hover:text-blue-700"
+          >
+            My Cards
+          </button>
+        </Link>
+
         <Link to="/">
           <button
             onClick={() => {
