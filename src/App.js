@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Browse from "./components/Browse";
 import AddNewCard from "./components/AddNewCard";
 import UpdateCard from "./components/UpdateCard";
+import CardPrev from "./components/CardPrev";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ export const route = createBrowserRouter([
       { path: "/", element: <Browse /> },
       { path: "/addcard", element: <AddNewCard /> },
       { path: "/edit/:id", element: <UpdateCard /> },
+      { path: "/cardpreview/:id", element: <CardPrev /> },
     ],
   },
 ]);

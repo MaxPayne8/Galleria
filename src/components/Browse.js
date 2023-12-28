@@ -47,12 +47,15 @@ const Browse = () => {
       <div className="flex justify-around flex-wrap">
         {cards.map((card, index) => (
           <div className="group relative">
-            <CardTile
-              author={card.author}
-              image={card.download_url}
-              id={card.id}
-              key={card.id}
-            />
+            <Link to={"/cardpreview/" + card.id}>
+              <CardTile
+                author={card.author}
+                image={card.download_url}
+                id={card.id}
+                key={card.id}
+              />
+            </Link>
+
             {!sure && (
               <div>
                 <Link to={"/edit/" + card.id}>
@@ -98,12 +101,14 @@ const Browse = () => {
         ))}
 
         {apiCards.map((card) => (
-          <CardTile
-            author={card.author}
-            image={card.download_url}
-            id={card.id}
-            key={card.id}
-          />
+          <Link to={"/cardpreview/" + card.id}>
+            <CardTile
+              author={card.author}
+              image={card.download_url}
+              id={card.id}
+              key={card.id}
+            />
+          </Link>
         ))}
       </div>
     </div>
