@@ -15,7 +15,13 @@ const CardPrev = () => {
   console.log(selectedCard);
   return (
     <div>
-      <img src={selectedCard[0]?.download_url} alt="haha" />
+      <h1 className="text-center text-2xl font-semibold mt-10">
+        Uploaded by -{" "}
+        <span className="text-blue-600">{selectedCard[0].author}</span>
+      </h1>
+      <div className="flex justify-center ">
+        <img src={selectedCard[0]?.download_url} className="mt-16" alt="haha" />
+      </div>
     </div>
   );
 };

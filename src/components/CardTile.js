@@ -4,7 +4,7 @@ const CardTile = ({ author, image }) => {
       className={` m-2 p-2 mt-10 relative h-50  font-semibold group hover:bg-slate-200 rounded-lg `}
     >
       <img
-        className="w-72 h-56 rounded-lg 0 tranform hover:scale-125 transition  "
+        className="w-72 h-56 rounded-lg 0 tranform hover:scale-110 md:hover:scale-125 transition  "
         src={image}
         alt="pic"
       />

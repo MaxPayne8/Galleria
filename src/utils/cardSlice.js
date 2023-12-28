@@ -6,6 +6,8 @@ const cardSlice = createSlice({
     apiCards: [],
     cards: [],
     index: null,
+    myCards: true,
+    sampleCards: true,
   },
   reducers: {
     addCards: (state, action) => {
@@ -28,10 +30,23 @@ const cardSlice = createSlice({
     addIndex: (state, action) => {
       state.index = action.payload;
     },
+    showSampleCard: (state, action) => {
+      state.myCards = action.payload;
+    },
+    showMyCards: (state, action) => {
+      state.sampleCards = action.payload;
+    },
   },
 });
 
-export const { addCard, addCards, deleteCard, updateCard, addIndex } =
-  cardSlice.actions;
+export const {
+  addCard,
+  addCards,
+  deleteCard,
+  updateCard,
+  addIndex,
+  showMyCards,
+  showSampleCard,
+} = cardSlice.actions;
 
 export default cardSlice.reducer;
