@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Outlet, createBrowserRouter } from "react-router-dom";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
+import Header from "./components/Header";
+import Browse from "./components/Browse";
+import AddNewCard from "./components/AddNewCard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={appStore}>
+      <Header />
+      <Outlet />
+    </Provider>
   );
 }
+
+export const route = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "/", element: <Browse /> },
+      { path: "/addcard", element: <AddNewCard /> },
+    ],
+  },
+]);
 
 export default App;
