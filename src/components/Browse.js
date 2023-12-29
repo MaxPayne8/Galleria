@@ -8,7 +8,7 @@ const Browse = () => {
   const dispatch = useDispatch();
 
   const getCards = async () => {
-    const data = await fetch("https://picsum.photos/v2/list?page=1&limit=25");
+    const data = await fetch("https://picsum.photos/v2/list?page=1&limit=6");
     const json = await data.json();
 
     dispatch(addCards(json));
@@ -73,7 +73,9 @@ const Browse = () => {
 
                   <button
                     className="bg-gray-700 rounded-lg z-20  text-white p-2 top-12 right-8   opacity-0 group-hover:opacity-70 absolute  hover:!bg-red-700 hover:!opacity-90 "
-                    onClick={() => setSure(true)}
+                    onClick={() => {
+                      setSure(true);
+                    }}
                   >
                     Delete
                   </button>

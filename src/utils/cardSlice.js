@@ -22,10 +22,11 @@ const cardSlice = createSlice({
       state.cards = state.cards.filter((card) => card.id !== index);
     },
     updateCard: (state, action) => {
-      const { index, id, author, download_url } = action.payload;
+      const { index, author, download_url, description } = action.payload;
 
       state.cards[index].author = author;
       state.cards[index].download_url = download_url;
+      state.cards[index].description = description;
     },
     addIndex: (state, action) => {
       state.index = action.payload;

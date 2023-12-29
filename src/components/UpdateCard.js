@@ -11,12 +11,13 @@ const UpdateCard = () => {
   const { cards } = useSelector((store) => store.card);
 
   const cardSelected = cards.filter((card) => card.id == id);
-  const { author, download_url } = cardSelected[0];
+  const { author, download_url, description } = cardSelected[0];
 
   const [error, setError] = useState(false);
 
   const [name, setName] = useState(author);
   const [image, setImage] = useState();
+  const [desc, setDesc] = useState(description);
   const getIndex = useSelector((store) => store.card.index);
 
   const pic = useRef(download_url);
@@ -33,6 +34,7 @@ const UpdateCard = () => {
           id: id,
           author: name,
           download_url: image ? URL.createObjectURL(image) : download_url,
+          description: desc,
         })
       );
       navigate("/");
@@ -42,7 +44,7 @@ const UpdateCard = () => {
   };
 
   return (
-    <div className="flex justify-center items-center text-slate-200 font font-semibold mt-36 ">
+    <div className="flex justify-center items-center text-slate-200 font font-semibold  h-screen ">
       <form
         className="w-96 bg-violet-600 rounded-lg "
         onSubmit={(e) => handleSubmit(e)}
@@ -60,6 +62,15 @@ const UpdateCard = () => {
               Name is required!!
             </label>
           )}
+        </div>
+        <div className="flex flex-col p-2 my-4">
+          <label className="p-2 m-2">Description</label>
+          <input
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+            type="text"
+            className="text-slate-900 p-2 m-2 rounded-lg"
+          />
         </div>
         <div className="flex-felx-col p-2 my-4">
           <label className="p-2 m-2">Select an image</label>
